@@ -59,5 +59,5 @@ def find_files_by_timestamps(request_weather_data: WeatherRequest) -> list:
                 file_list.append(file_name)
 
     if not file_list:
-        raise FileNotFoundError
+        raise FileNotFoundError("File not found")
     return file_list

@@ -26,7 +26,7 @@ def read_wgf4_file(file_name: str, request_weather_data) -> Union[float, None]:
         temp = None
 
         while True:
-            data = fp.read(chunk_size)
+            data = fp.read(chunk_size * 4)
             if not data:
                 break
             float_values = np.frombuffer(data, dtype=np.float32)
@@ -36,4 +36,7 @@ def read_wgf4_file(file_name: str, request_weather_data) -> Union[float, None]:
                 if temp != -100500.0:
                     return temp
 
-    return temp
+            offset -= len(float_values)
+
+    raise ValueError(
+        "Invalid coordinates: Data not available for the specified coordinates")

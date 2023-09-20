@@ -35,8 +35,12 @@ def get_forecast(
     try:
         request_weather_data = WeatherRequest(from_ts, to_ts, lat, lon)
         response_weather_data = request_processing(request_weather_data)
-    except FileNotFoundError:
-        raise HTTPException(status_code=404, detail="File not found")
+    except FileNotFoundError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
     return response_weather_data
 
