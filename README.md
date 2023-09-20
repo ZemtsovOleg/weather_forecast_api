@@ -23,6 +23,10 @@ This is a FastAPI application for retrieving weather forecasts based on specifie
 
 ## Usage
 
+Go to the project folder:
+
+<pre lang="bash">cd weather_forecast_api</pre>
+
 Start the FastAPI server:
 
 <pre lang="bash">uvicorn main:app --host 0.0.0.0 --port 8000</pre>
