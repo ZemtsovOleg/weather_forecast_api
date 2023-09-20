@@ -1,0 +1,23 @@
+# Editors
+.vscode/
+
+# Mac/OSX
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Environments
+venv/
+env/
+
+__pycache__/
+
+django_cache/
+
+setenv.sh
+setenv.bat
+
+# Django stuff:
+*.sqlite
+*.sqlite3
