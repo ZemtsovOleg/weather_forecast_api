@@ -33,7 +33,7 @@ Start the FastAPI server:
 
 Make GET requests to retrieve weather forecasts:
 
-<pre lang="bash">'http://localhost:8000/getForecast?from_ts=0&to_ts=2580886680&lat=37.7749&lon=-24.4194'</pre>
+<pre lang="bash">http://localhost:8000/getForecast?from_ts=0&to_ts=2580886680&lat=37.7749&lon=-24.4194</pre>
 
 Replace the query parameters (from_ts, to_ts, lat, and lon) with your desired values.
 
