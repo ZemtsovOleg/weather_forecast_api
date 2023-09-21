@@ -8,6 +8,7 @@ This is a FastAPI application for retrieving weather forecasts based on specifie
 from fastapi import FastAPI, HTTPException, Query
 
 from services import WeatherRequest, request_processing
+from validators import is_valid_latitude, is_valid_longitude
 
 app = FastAPI()
 
@@ -32,6 +33,10 @@ def get_forecast(
     :return: A dictionary containing weather forecast data with time labels (timestamps) as keys and values as dictionaries
              with temperature (temp).
     """
+    if not is_valid_latitude(lat) or not is_valid_longitude(lon):
+        raise HTTPException(
+            status_code=400, detail="Invalid latitude or longitude")
+
     try:
         request_weather_data = WeatherRequest(from_ts, to_ts, lat, lon)
         response_weather_data = request_processing(request_weather_data)
