@@ -4,7 +4,7 @@ This is a FastAPI application for retrieving weather forecasts based on specifie
 
 ## Requirements:
 
-- Python (version 3.10 or higher)
+- Python (version 3.11 or higher)
 - Other dependencies specified in `requirements.txt`
 
 ## Installation
@@ -29,25 +29,30 @@ Go to the project folder:
 
 Start the FastAPI server:
 
-<pre lang="bash">uvicorn main:app --host 0.0.0.0 --port 8000</pre>
+<pre lang="bash">uvicorn main:app --host 0.0.0.0 --port 80</pre>
 
-Make GET requests to retrieve weather forecasts:
+### Getting Weather Forecasts
 
-<pre lang="bash">http://localhost:8000/getForecast?from_ts=0&to_ts=2580886680&lat=37.7749&lon=-24.4194</pre>
+To obtain a weather forecast, send a GET request to the `http://localhost/getForecast` endpoint with the following parameters:
+
+- `from_ts` - start time in timestamp format (integer).
+- `to_ts` - end time in timestamp format (integer).
+- `lat` - latitude (floating-point number).
+- `lon` - longitude (floating-point number).
+
+Example request:
+
+```
+http://localhost/getForecast?from_ts=1631952000&to_ts=1632042000&lat=52.5200&lon=13.4050
+```
 
 Replace the query parameters (from_ts, to_ts, lat, and lon) with your desired values.
 
 ## API Documentation
+
 The API provides the following endpoint:
 
 /getForecast: Retrieve weather forecasts based on specified parameters.
-
-## Request Parameters
-
-from_ts (integer): Start time in timestamp format.
-to_ts (integer): End time in timestamp format.
-lat (float): Latitude in decimal degrees.
-lon (float): Longitude in decimal degrees.
 
 ## Response
 
@@ -68,3 +73,31 @@ Example response:
     }
 }
 </pre>
+
+<br>
+
+# Running in a Docker Container
+
+## Requirements
+
+- Docker (for running in a container)
+
+## Building the Docker Container
+
+1. Build the Docker container:
+
+```bash
+docker build -t weather_forecast_api .
+```
+
+## Running in a Docker Container
+
+2. Start the container using Docker Compose:
+
+```bash
+docker-compose up -d
+```
+
+3. The API will be available at `http://localhost`.
+
+Note: Make sure to install Docker and Docker Compose before running the containerized application.
