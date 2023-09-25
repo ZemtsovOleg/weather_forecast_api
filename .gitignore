@@ -21,3 +21,5 @@ setenv.bat
 # Django stuff:
 *.sqlite
 *.sqlite3
+
+Test_task_windy.pdf

@@ -31,14 +31,17 @@ def request_processing(request_weather_data: WeatherRequest) -> dict:
              with temperature (temp).
     """
     file_list = find_files_by_timestamps(request_weather_data)
-    response_weather_data = process_files(file_list, request_weather_data)
+    response_weather_data = fetch_temperature_data_from_files(
+        file_list, request_weather_data)
 
     return response_weather_data
 
 
-def process_files(file_list: list[str], request_weather_data: WeatherRequest) -> dict:
+def fetch_temperature_data_from_files(
+        file_list: list[str], request_weather_data: WeatherRequest
+) -> dict[int, dict[str, float]]:
     """
-    Process a list of weather data files and retrieve the temperature data.
+    Fetch temperature data from a list of weather data files.
 
     :param file_list: List of file names to process.
     :param request_weather_data: An instance of WeatherRequest containing request parameters.
